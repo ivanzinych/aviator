@@ -24,6 +24,8 @@ final class GameScene: SKScene, SKPhysicsContactDelegate {
     var pipesNode: SKNode!
     var isRestartable = false
     var scoreLabel: SKLabelNode!
+    var borderBackgroundNode: SKShapeNode!
+    var scoreBackgroundNode: SKShapeNode!
     var currentScore = 0
     
     let birdCategory: UInt32 = 1 << 0
@@ -138,10 +140,38 @@ final class GameScene: SKScene, SKPhysicsContactDelegate {
         
         currentScore = 0
         scoreLabel = SKLabelNode(fontNamed: "Montserrat")
-        scoreLabel.position = CGPoint(x: self.frame.midX, y: 3.5 * self.frame.size.height / 4)
         scoreLabel.zPosition = 100
+        scoreLabel.fontSize = 24
         scoreLabel.text = String(currentScore)
-        self.addChild(scoreLabel)
+        
+        // Create a circular background for scoreBackground node
+        let borderBackgroundSize = CGSize(width: scoreLabel.frame.width + 30, height: scoreLabel.frame.height + 30)
+        borderBackgroundNode = SKShapeNode(circleOfRadius: borderBackgroundSize.width / 2)
+        borderBackgroundNode.fillColor = UIColor(named: "borderedBackgroundNode")!
+        borderBackgroundNode.zPosition = 99
+        
+        // Position the circular background
+        borderBackgroundNode.position = CGPoint(x: self.frame.midX, y: 3.5 * self.frame.size.height / 4 + 1)
+        
+        self.addChild(borderBackgroundNode)
+        
+        // Create a circular background for the score label
+        let backgroundSize = CGSize(width: scoreLabel.frame.width + 30, height: scoreLabel.frame.height + 30)
+        scoreBackgroundNode = SKShapeNode(circleOfRadius: backgroundSize.width / 2)
+        scoreBackgroundNode.fillColor = UIColor(named: "counterBackgroundNode")!
+        scoreBackgroundNode.strokeColor = .clear // Убедитесь, что обводка прозрачная
+        scoreBackgroundNode.lineWidth = 0 // Установите ширину линии в 0, чтобы убрать обводку
+        scoreBackgroundNode.zPosition = 99
+
+        // Add the score label to the circular background
+        scoreBackgroundNode.addChild(scoreLabel)
+        scoreLabel.position = CGPoint(x: 0, y: -scoreLabel.frame.height / 2)
+
+        // Position the circular background
+        scoreBackgroundNode.position = CGPoint(x: self.frame.midX, y: 3.5 * self.frame.size.height / 4)
+
+        // Add the circular background to the scene
+        self.addChild(scoreBackgroundNode)
         
         self.isPaused = true
         sceneDelegate?.displayCounter()
