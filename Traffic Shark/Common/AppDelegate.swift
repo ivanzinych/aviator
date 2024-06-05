@@ -1,7 +1,4 @@
 //
-//  AppDelegate.swift
-//  rocketRush
-//
 //  Created by Aleksey Pirogov on 11/10/23.
 //
 

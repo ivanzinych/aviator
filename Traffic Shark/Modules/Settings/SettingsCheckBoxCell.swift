@@ -1,7 +1,4 @@
 //
-//  SettingsCheckBoxCell.swift
-//  rocketRush
-//
 //  Created by Aleksey Pirogov on 12.11.2023.
 //
 
