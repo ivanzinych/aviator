@@ -1,326 +1,283 @@
 //
-//  GameScene.swift
-//  FlappyBird
-//
-//  Created by Nate Murray on 6/2/14.
-//  Copyright (c) 2014 Fullstack.io. All rights reserved.
+//  Created by Aleksey Pirogov on 6/2/14.
 //
 
 import SpriteKit
 
 protocol GameSceneDelegate {
-    func endGame(score: Int)
-    func isScenePaused(_ value: Bool)
-    func showCounter()
+    func gameEnded(score: Int)
+    func scenePaused(_ paused: Bool)
+    func displayCounter()
 }
 
-class GameScene: SKScene, SKPhysicsContactDelegate{
-    let verticalPipeGap = 200.0
+final class GameScene: SKScene, SKPhysicsContactDelegate {
+    let gapBetweenPipes = 200.0
     
-    var bird:SKSpriteNode!
-    var skyColor:SKColor!
-    var pipeTextureUp:SKTexture!
-    var pipeTextureDown:SKTexture!
-    var blowTexture: SKTexture!
+    var birdNode: SKSpriteNode!
+    var skyBackgroundColor: SKColor!
+    var pipeUpTexture: SKTexture!
+    var pipeDownTexture: SKTexture!
+    var explosionTexture: SKTexture!
     var birdTexture: SKTexture!
-    var movePipesAndRemove:SKAction!
-    var moving:SKNode!
-    var pipes:SKNode!
-    var canRestart = Bool()
-    var scoreLabelNode:SKLabelNode!
-    var score = NSInteger()
+    var pipeMovementAction: SKAction!
+    var movingNode: SKNode!
+    var pipesNode: SKNode!
+    var isRestartable = false
+    var scoreLabel: SKLabelNode!
+    var currentScore = 0
     
     let birdCategory: UInt32 = 1 << 0
     let worldCategory: UInt32 = 1 << 1
     let pipeCategory: UInt32 = 1 << 2
     let scoreCategory: UInt32 = 1 << 3
     
-    var spawnThenDelayForever: SKAction?
+    var continuousSpawnAction: SKAction?
     
-    var viewDelegate: GameSceneDelegate?
+    var sceneDelegate: GameSceneDelegate?
     
-    var timer: Timer?
+    var trailTimer: Timer?
     
     override var isPaused: Bool {
         didSet {
-            
-            viewDelegate?.isScenePaused(isPaused)
+            sceneDelegate?.scenePaused(isPaused)
             
             if isPaused {
-                timer?.invalidate()
-                timer = nil
+                trailTimer?.invalidate()
+                trailTimer = nil
             } else {
-                timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(addTrail), userInfo: nil, repeats: true)
+                trailTimer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(createTrail), userInfo: nil, repeats: true)
             }
         }
     }
 
     override func didMove(to view: SKView) {
-                        
-        canRestart = true
+        isRestartable = true
         
-        // setup physics
-        self.physicsWorld.gravity = CGVector( dx: 0.0, dy: -5.0 )
+        self.physicsWorld.gravity = CGVector(dx: 0.0, dy: -5.0)
         self.physicsWorld.contactDelegate = self
         
-        // setup background color
-        skyColor = SKColor(red: 81.0/255.0, green: 192.0/255.0, blue: 201.0/255.0, alpha: 1.0)
-        self.backgroundColor = skyColor
+        skyBackgroundColor = SKColor(red: 81.0 / 255.0, green: 192.0 / 255.0, blue: 201.0 / 255.0, alpha: 1.0)
+        self.backgroundColor = skyBackgroundColor
         
-        moving = SKNode()
-        self.addChild(moving)
-        pipes = SKNode()
-        moving.addChild(pipes)
+        movingNode = SKNode()
+        self.addChild(movingNode)
+        pipesNode = SKNode()
+        movingNode.addChild(pipesNode)
         
-        // ground
         let groundTexture = SKTexture(imageNamed: "land")
-        groundTexture.filteringMode = .nearest // shorter form for SKTextureFilteringMode.Nearest
+        groundTexture.filteringMode = .nearest
         
-        let moveGroundSprite = SKAction.moveBy(x: -groundTexture.size().width * 2.0, y: 0, duration: TimeInterval(0.02 * groundTexture.size().width * 2.0))
-        let resetGroundSprite = SKAction.moveBy(x: groundTexture.size().width * 2.0, y: 0, duration: 0.0)
-        let moveGroundSpritesForever = SKAction.repeatForever(SKAction.sequence([moveGroundSprite,resetGroundSprite]))
+        let moveGroundAction = SKAction.moveBy(x: -groundTexture.size().width * 2.0, y: 0, duration: TimeInterval(0.02 * groundTexture.size().width * 2.0))
+        let resetGroundAction = SKAction.moveBy(x: groundTexture.size().width * 2.0, y: 0, duration: 0.0)
+        let moveGroundForeverAction = SKAction.repeatForever(SKAction.sequence([moveGroundAction, resetGroundAction]))
         
-        for i in 0 ..< 2 + Int(self.frame.size.width / ( groundTexture.size().width )) {
-            let i = CGFloat(i)
-            let sprite = SKSpriteNode(texture: groundTexture)
-            sprite.setScale(1.0)
-            sprite.position = CGPoint(x: i * sprite.size.width, y: sprite.size.height / 2.0)
-            sprite.run(moveGroundSpritesForever)
-//            moving.addChild(sprite)
+        for i in 0 ..< 2 + Int(self.frame.size.width / groundTexture.size().width) {
+            let groundSprite = SKSpriteNode(texture: groundTexture)
+            groundSprite.setScale(1.0)
+            groundSprite.position = CGPoint(x: CGFloat(i) * groundSprite.size.width, y: groundSprite.size.height / 2.0)
+            groundSprite.run(moveGroundForeverAction)
         }
         
-        // skyline
         let skyTexture = SKTexture(imageNamed: "space")
         skyTexture.filteringMode = .nearest
         
-        let moveSkySprite = SKAction.moveBy(x: -skyTexture.size().width * 2.0, y: 0, duration: TimeInterval(0.1 * skyTexture.size().width * 2.0))
-        let resetSkySprite = SKAction.moveBy(x: skyTexture.size().width * 2.0, y: 0, duration: 0.0)
-        let moveSkySpritesForever = SKAction.repeatForever(SKAction.sequence([moveSkySprite,resetSkySprite]))
+        let moveSkyAction = SKAction.moveBy(x: -skyTexture.size().width * 2.0, y: 0, duration: TimeInterval(0.1 * skyTexture.size().width * 2.0))
+        let resetSkyAction = SKAction.moveBy(x: skyTexture.size().width * 2.0, y: 0, duration: 0.0)
+        let moveSkyForeverAction = SKAction.repeatForever(SKAction.sequence([moveSkyAction, resetSkyAction]))
         
-        for i in 0 ..< 2 + Int(self.frame.size.width / ( skyTexture.size().width * 2 )) {
-            let i = CGFloat(i)
-            let sprite = SKSpriteNode(texture: skyTexture)
-            sprite.setScale(1)
-            sprite.zPosition = -20
-            sprite.position = CGPoint(x: i * sprite.size.width, y: sprite.size.height / 2.0)
-            sprite.run(moveSkySpritesForever)
-            moving.addChild(sprite)
+        for i in 0 ..< 2 + Int(self.frame.size.width / (skyTexture.size().width * 2)) {
+            let skySprite = SKSpriteNode(texture: skyTexture)
+            skySprite.setScale(1)
+            skySprite.zPosition = -20
+            skySprite.position = CGPoint(x: CGFloat(i) * skySprite.size.width, y: skySprite.size.height / 2.0)
+            skySprite.run(moveSkyForeverAction)
+            movingNode.addChild(skySprite)
         }
         
-        // create the pipes textures
-        pipeTextureUp = SKTexture(imageNamed: "PipeUp")
-        pipeTextureUp.filteringMode = .nearest
-        pipeTextureDown = SKTexture(imageNamed: "PipeDown")
-        pipeTextureDown.filteringMode = .nearest
-        blowTexture = SKTexture(imageNamed: "explosion")
-        blowTexture.filteringMode = .nearest
+        pipeUpTexture = SKTexture(imageNamed: "PipeUp")
+        pipeUpTexture.filteringMode = .nearest
+        pipeDownTexture = SKTexture(imageNamed: "PipeDown")
+        pipeDownTexture.filteringMode = .nearest
+        explosionTexture = SKTexture(imageNamed: "explosion")
+        explosionTexture.filteringMode = .nearest
         birdTexture = SKTexture(imageNamed: "bird-01")
         birdTexture.filteringMode = .nearest
-        // create the pipes movement actions
-        let distanceToMove = CGFloat(self.frame.size.width + 0.5 * pipeTextureUp.size().width)
-        let movePipes = SKAction.moveBy(x: -distanceToMove, y:0.0, duration:TimeInterval(0.01 * distanceToMove))
-        let removePipes = SKAction.removeFromParent()
-        movePipesAndRemove = SKAction.sequence([movePipes, removePipes])
         
-        // spawn the pipes
-        let spawn = SKAction.run(spawnPipes)
-        let delay = SKAction.wait(forDuration: TimeInterval(2.5))
-        let spawnThenDelay = SKAction.sequence([spawn, delay])
-        let spawnThenDelayForever = SKAction.repeatForever(spawnThenDelay)
-        self.spawnThenDelayForever = spawnThenDelayForever
-        self.run(spawnThenDelayForever)
+        let pipeDistance = CGFloat(self.frame.size.width + 0.5 * pipeUpTexture.size().width)
+        let movePipesAction = SKAction.moveBy(x: -pipeDistance, y: 0.0, duration: TimeInterval(0.01 * pipeDistance))
+        let removePipesAction = SKAction.removeFromParent()
+        pipeMovementAction = SKAction.sequence([movePipesAction, removePipesAction])
         
-        // setup our bird
+        let spawnPipesAction = SKAction.run(spawnPipes)
+        let delayAction = SKAction.wait(forDuration: TimeInterval(2.5))
+        let spawnThenDelayAction = SKAction.sequence([spawnPipesAction, delayAction])
+        let repeatSpawnAction = SKAction.repeatForever(spawnThenDelayAction)
+        self.continuousSpawnAction = repeatSpawnAction
+        self.run(repeatSpawnAction)
         
-        bird = SKSpriteNode(texture: birdTexture)
-        bird.setScale(1.0)
-        bird.position = CGPoint(x: self.frame.size.width * 0.4, y:self.frame.size.height * 0.6)
+        birdNode = SKSpriteNode(texture: birdTexture)
+        birdNode.setScale(1.0)
+        birdNode.position = CGPoint(x: self.frame.size.width * 0.4, y: self.frame.size.height * 0.6)
         
-        bird.physicsBody = SKPhysicsBody(circleOfRadius: bird.size.height / 2.0)
-        bird.physicsBody?.isDynamic = true
-        bird.physicsBody?.allowsRotation = false
+        birdNode.physicsBody = SKPhysicsBody(circleOfRadius: birdNode.size.height / 2.0)
+        birdNode.physicsBody?.isDynamic = true
+        birdNode.physicsBody?.allowsRotation = false
         
-        bird.physicsBody?.categoryBitMask = birdCategory
-        bird.physicsBody?.collisionBitMask = worldCategory | pipeCategory
-        bird.physicsBody?.contactTestBitMask = worldCategory | pipeCategory
+        birdNode.physicsBody?.categoryBitMask = birdCategory
+        birdNode.physicsBody?.collisionBitMask = worldCategory | pipeCategory
+        birdNode.physicsBody?.contactTestBitMask = worldCategory | pipeCategory
         
-        self.addChild(bird)
+        self.addChild(birdNode)
         
-        // create the ground
-        let ground = SKNode()
-        ground.position = CGPoint(x: 0, y: 0)
-        ground.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: self.frame.size.width, height: 1))
-        ground.physicsBody?.isDynamic = false
-        ground.physicsBody?.categoryBitMask = worldCategory
-        self.addChild(ground)
+        let groundNode = SKNode()
+        groundNode.position = CGPoint(x: 0, y: 0)
+        groundNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: self.frame.size.width, height: 1))
+        groundNode.physicsBody?.isDynamic = false
+        groundNode.physicsBody?.categoryBitMask = worldCategory
+        self.addChild(groundNode)
         
-        // Initialize label and create a label which holds the score
-        score = 0
-        scoreLabelNode = SKLabelNode(fontNamed:"MarkerFelt-Wide")
-        scoreLabelNode.position = CGPoint( x: self.frame.midX, y: 3.5 * self.frame.size.height / 4 )
-        scoreLabelNode.zPosition = 100
-        scoreLabelNode.text = String(score)
-        self.addChild(scoreLabelNode)
+        currentScore = 0
+        scoreLabel = SKLabelNode(fontNamed: "Montserrat")
+        scoreLabel.position = CGPoint(x: self.frame.midX, y: 3.5 * self.frame.size.height / 4)
+        scoreLabel.zPosition = 100
+        scoreLabel.text = String(currentScore)
+        self.addChild(scoreLabel)
         
         self.isPaused = true
-        viewDelegate?.showCounter()
+        sceneDelegate?.displayCounter()
     }
     
-   @objc func addTrail() {
-       
-       let trail = SKSpriteNode(texture: SKTexture(imageNamed: "trail_circle"))
-       trail.size = .init(width: 10, height: 10)
-       trail.position = bird.position
-       trail.zPosition = bird.zPosition - 0.1
-       trail.alpha = 0.5
-       
-       let distanceToMove = CGFloat(self.frame.size.width + 0.5 * blowTexture.size().width)
-       let moveTrail = SKAction.moveBy(x: -distanceToMove, y:0.0, duration:TimeInterval(0.01 * distanceToMove))
-       addChild(trail)
-       
-//       trail.run(SKAction.scale(to: .zero, duration: 1))
-       trail.run(SKAction.fadeOut(withDuration: 1))
-       trail.run(moveTrail)
-
-       DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-           trail.removeFromParent()
-       }
+    @objc func createTrail() {
+        let trailNode = SKSpriteNode(texture: SKTexture(imageNamed: "trail_circle"))
+        trailNode.size = CGSize(width: 10, height: 10)
+        trailNode.position = birdNode.position
+        trailNode.zPosition = birdNode.zPosition - 0.1
+        trailNode.alpha = 0.5
+        
+        let trailDistance = CGFloat(self.frame.size.width + 0.5 * explosionTexture.size().width)
+        let moveTrailAction = SKAction.moveBy(x: -trailDistance, y: 0.0, duration: TimeInterval(0.01 * trailDistance))
+        addChild(trailNode)
+        
+        trailNode.run(SKAction.fadeOut(withDuration: 1))
+        trailNode.run(moveTrailAction)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            trailNode.removeFromParent()
+        }
     }
 
     func spawnPipes() {
-        let pipePair = SKNode()
-        pipePair.position = CGPoint( x: self.frame.size.width + pipeTextureUp.size().width * 2, y: 0 )
-        pipePair.zPosition = -10
+        let pipePairNode = SKNode()
+        pipePairNode.position = CGPoint(x: self.frame.size.width + pipeUpTexture.size().width * 2, y: 0)
+        pipePairNode.zPosition = -10
         
-        let height = UInt32( self.frame.size.height / 3)
-        let y = Double(arc4random_uniform(height))
+        let pipeHeight = UInt32(self.frame.size.height / 3)
+        let pipeYPosition = Double(arc4random_uniform(pipeHeight))
         
-        let pipeDown = SKSpriteNode(texture: pipeTextureDown)
-        pipeDown.setScale(1.3)
-        pipeDown.position = CGPoint(x: -300.0, y: y + Double(pipeDown.size.height) + verticalPipeGap)
+        let pipeDownNode = SKSpriteNode(texture: pipeDownTexture)
+        pipeDownNode.setScale(1.3)
+        pipeDownNode.position = CGPoint(x: -300.0, y: pipeYPosition + Double(pipeDownNode.size.height) + gapBetweenPipes)
         
+        pipeDownNode.physicsBody = SKPhysicsBody(rectangleOf: pipeDownNode.size)
+        pipeDownNode.physicsBody?.isDynamic = false
+        pipeDownNode.physicsBody?.categoryBitMask = pipeCategory
+        pipeDownNode.physicsBody?.contactTestBitMask = birdCategory
+        pipePairNode.addChild(pipeDownNode)
         
-        pipeDown.physicsBody = SKPhysicsBody(rectangleOf: pipeDown.size)
-        pipeDown.physicsBody?.isDynamic = false
-        pipeDown.physicsBody?.categoryBitMask = pipeCategory
-        pipeDown.physicsBody?.contactTestBitMask = birdCategory
-        pipePair.addChild(pipeDown)
+        let pipeUpNode = SKSpriteNode(texture: pipeUpTexture)
+        pipeUpNode.setScale(1.3)
+        pipeUpNode.position = CGPoint(x: -300.0, y: pipeYPosition)
         
-        let pipeUp = SKSpriteNode(texture: pipeTextureUp)
-        pipeUp.setScale(1.3)
-        pipeUp.position = CGPoint(x: -300.0, y: y)
+        pipeUpNode.physicsBody = SKPhysicsBody(rectangleOf: pipeUpNode.size)
+        pipeUpNode.physicsBody?.isDynamic = false
+        pipeUpNode.physicsBody?.categoryBitMask = pipeCategory
+        pipeUpNode.physicsBody?.contactTestBitMask = birdCategory
+        pipePairNode.addChild(pipeUpNode)
         
-        pipeUp.physicsBody = SKPhysicsBody(rectangleOf: pipeUp.size)
-        pipeUp.physicsBody?.isDynamic = false
-        pipeUp.physicsBody?.categoryBitMask = pipeCategory
-        pipeUp.physicsBody?.contactTestBitMask = birdCategory
-        pipePair.addChild(pipeUp)
+        let scoreNode = SKNode()
+        scoreNode.position = CGPoint(x: -300 + pipeDownNode.size.width + birdNode.size.width / 2, y: self.frame.midY)
+        scoreNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: pipeUpNode.size.width, height: self.frame.size.height))
+        scoreNode.physicsBody?.isDynamic = false
+        scoreNode.physicsBody?.categoryBitMask = scoreCategory
+        scoreNode.physicsBody?.contactTestBitMask = birdCategory
+        pipePairNode.addChild(scoreNode)
         
-        let contactNode = SKNode()
-        contactNode.position = CGPoint( x: -300 + pipeDown.size.width + bird.size.width / 2, y: self.frame.midY )
-        contactNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize( width: pipeUp.size.width, height: self.frame.size.height ))
-        contactNode.physicsBody?.isDynamic = false
-        contactNode.physicsBody?.categoryBitMask = scoreCategory
-        contactNode.physicsBody?.contactTestBitMask = birdCategory
-        pipePair.addChild(contactNode)
-        
-        pipePair.run(movePipesAndRemove)
-        pipes.addChild(pipePair)
-        
+        pipePairNode.run(pipeMovementAction)
+        pipesNode.addChild(pipePairNode)
     }
     
-    func resetScene() {
-        // Move bird to original position and reset velocity
-        bird.texture = birdTexture
-        bird.position = CGPoint(x: self.frame.size.width / 2.5, y: self.frame.midY)
-        bird.physicsBody?.velocity = CGVector( dx: 0, dy: 0 )
-        bird.physicsBody?.collisionBitMask = worldCategory | pipeCategory
-        bird.speed = 1.0
-        bird.zRotation = 0.0
+    func resetGameScene() {
+        birdNode.texture = birdTexture
+        birdNode.position = CGPoint(x: self.frame.size.width / 2.5, y: self.frame.midY)
+        birdNode.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
+        birdNode.physicsBody?.collisionBitMask = worldCategory | pipeCategory
+        birdNode.speed = 1.0
+        birdNode.zRotation = 0.0
         
-        // Remove all existing pipes
-        pipes.removeAllChildren()
+        pipesNode.removeAllChildren()
         
-        // Reset _canRestart
-        canRestart = false
+        isRestartable = false
         
-        // Reset score
-        score = 0
-        scoreLabelNode.text = String(score)
+        currentScore = 0
+        scoreLabel.text = String(currentScore)
         
-        // Restart animation
-        moving.speed = 1
-        
+        movingNode.speed = 1
     }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if moving.speed > 0  {
-            for _ in touches { // do we need all touches?
-                bird.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
-                bird.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 20))
+        if movingNode.speed > 0 {
+            for _ in touches {
+                birdNode.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
+                birdNode.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 20))
             }
-        } else if canRestart {
-            self.resetScene()
+        } else if isRestartable {
+            resetGameScene()
         }
     }
     
     override func update(_ currentTime: TimeInterval) {
-        /* Called before each frame is rendered */
-        let value = bird.physicsBody!.velocity.dy * ( bird.physicsBody!.velocity.dy < 0 ? 0.003 : 0.001 )
-        bird.zRotation = min( max(-1, value), 0.5 )
+        let rotationValue = birdNode.physicsBody!.velocity.dy * (birdNode.physicsBody!.velocity.dy < 0 ? 0.003 : 0.001)
+        birdNode.zRotation = min(max(-1, rotationValue), 0.5)
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
-        
-        if moving.speed > 0 {
-            
-            if ( contact.bodyA.categoryBitMask & scoreCategory ) == scoreCategory || ( contact.bodyB.categoryBitMask & scoreCategory ) == scoreCategory {
-                // Bird has contact with score entity
-                score += 1
-                scoreLabelNode.text = String(score)
-                
-                // Add a little visual feedback for the score increment
-                scoreLabelNode.run(SKAction.sequence([SKAction.scale(to: 1.5, duration:TimeInterval(0.1)), SKAction.scale(to: 1.0, duration:TimeInterval(0.1))]))
+        if movingNode.speed > 0 {
+            if (contact.bodyA.categoryBitMask & scoreCategory) == scoreCategory || (contact.bodyB.categoryBitMask & scoreCategory) == scoreCategory {
+                currentScore += 1
+                scoreLabel.text = String(currentScore)
+                scoreLabel.run(SKAction.sequence([SKAction.scale(to: 1.5, duration: 0.1), SKAction.scale(to: 1.0, duration: 0.1)]))
             } else {
-                                
-                moving.speed = 0
+                movingNode.speed = 0
+                birdNode.texture = explosionTexture
+                birdNode.physicsBody?.collisionBitMask = worldCategory
+                birdNode.run(SKAction.rotate(byAngle: CGFloat(Double.pi) * CGFloat(birdNode.position.y) * 0.01, duration: 1), completion: { self.birdNode.speed = 0 })
                 
-                bird.texture = blowTexture
-                
-                bird.physicsBody?.collisionBitMask = worldCategory
-                bird.run(SKAction.rotate(byAngle: CGFloat(Double.pi) * CGFloat(bird.position.y) * 0.01, duration:1), completion:{self.bird.speed = 0 })
-                
-                UserDefaults.standard.set(Int(score), forKey: "lastResult")
-                if let bestScore = UserDefaults.standard.value(forKey: "bestScore") as? Int {
-                    if bestScore < Int(score) {
-                        UserDefaults.standard.set(Int(score), forKey: "bestScore")
-                    }
-                } else {
-                    UserDefaults.standard.set(Int(score), forKey: "bestScore")
+                UserDefaults.standard.set(currentScore, forKey: "lastResult")
+                let bestScore = UserDefaults.standard.integer(forKey: "bestScore")
+                if bestScore < currentScore {
+                    UserDefaults.standard.set(currentScore, forKey: "bestScore")
                 }
                 
-                if let numberOfGames = UserDefaults.standard.value(forKey: "numberOfGames") as? Int {
-                        UserDefaults.standard.set(numberOfGames + 1, forKey: "numberOfGames")
-                } else {
-                    UserDefaults.standard.set(1, forKey: "numberOfGames")
-                }
+                let numberOfGames = UserDefaults.standard.integer(forKey: "numberOfGames") + 1
+                UserDefaults.standard.set(numberOfGames, forKey: "numberOfGames")
                 
-                viewDelegate?.endGame(score: Int(score))
+                sceneDelegate?.gameEnded(score: currentScore)
                 
-                
-                // Flash background if contact is detected
                 self.removeAction(forKey: "flash")
-                self.run(SKAction.sequence([SKAction.repeat(SKAction.sequence([SKAction.run({
-                    self.backgroundColor = SKColor(red: 1, green: 0, blue: 0, alpha: 1.0)
-                    }),SKAction.wait(forDuration: TimeInterval(0.05)), SKAction.run({
-                        self.backgroundColor = self.skyColor
-                        }), SKAction.wait(forDuration: TimeInterval(0.05))]), count:4), SKAction.run({
-                            self.canRestart = true
-                            })]), withKey: "flash")
+                self.run(SKAction.sequence([
+                    SKAction.repeat(SKAction.sequence([
+                        SKAction.run({ self.backgroundColor = SKColor(red: 1, green: 0, blue: 0, alpha: 1.0) }),
+                        SKAction.wait(forDuration: 0.05),
+                        SKAction.run({ self.backgroundColor = self.skyBackgroundColor }),
+                        SKAction.wait(forDuration: 0.05)
+                    ]), count: 4),
+                    SKAction.run({ self.isRestartable = true })
+                ]), withKey: "flash")
             }
         }
     }
     
-    func finishGame() {
+    func endGame() {
         self.removeAllActions()
     }
 }

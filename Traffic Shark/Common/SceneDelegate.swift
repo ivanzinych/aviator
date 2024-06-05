@@ -2,7 +2,7 @@
 //  SceneDelegate.swift
 //  rocketRush
 //
-//  Created by user234184 on 11/10/23.
+//  Created by Aleksey Pirogov on 11/10/23.
 //
 
 import UIKit
