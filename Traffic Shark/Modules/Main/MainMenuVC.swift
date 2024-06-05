@@ -2,7 +2,7 @@
 //  MainMenuVC.swift
 //  rocketRush
 //
-//  Created by user234184 on 12.11.2023.
+//  Created by Aleksey Pirogov on 12.11.2023.
 //
 
 import UIKit
@@ -13,10 +13,13 @@ final class MainMenuVC: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        setGradientBackground(button: startButton)
+        setupGradientBackground(button: startButton)
     }
+}
 
-    func setGradientBackground(button: UIButton) {
+// MARK: - MainMenuVC
+private extension MainMenuVC {
+    func setupGradientBackground(button: UIButton) {
         let gradientLayer = CAGradientLayer()
         print(button.bounds)
         gradientLayer.frame = button.bounds

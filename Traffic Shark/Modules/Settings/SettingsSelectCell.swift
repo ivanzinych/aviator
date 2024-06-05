@@ -2,7 +2,7 @@
 //  SettingsSelectCell.swift
 //  rocketRush
 //
-//  Created by user234184 on 12.11.2023.
+//  Created by Aleksey Pirogov on 12.11.2023.
 //
 
 import UIKit

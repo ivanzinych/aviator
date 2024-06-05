@@ -64,7 +64,7 @@ class GameViewController: UIViewController {
             /* Set the scale mode to scale to fit the window */
             scene.scaleMode = .aspectFill
             
-            scene.viewDelegate = self
+            scene.sceneDelegate = self
             
             self.scene = scene
             
@@ -137,22 +137,16 @@ class GameViewController: UIViewController {
             return UIInterfaceOrientationMask.all
         }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Release any cached data, images, etc that aren't in use.
-    }
     
     @IBAction func tapMainMenu(_ sender: Any) {
-        scene?.finishGame()
+        scene?.endGame()
         self.navigationController?.popViewController(animated: true)
         self.navigationController?.navigationBar.isHidden = false
     }
     
     @IBAction func tapNewGame(_ sender: Any) {
-//        scene?.isPaused = false
         resultView.isHidden = true
-        scene?.resetScene()
+        scene?.resetGameScene()
         countdownValue = 3
         counterLabel.image = UIImage(named: "counter_\(countdownValue)")
         counterView.isHidden = false
@@ -165,13 +159,13 @@ class GameViewController: UIViewController {
     }
 }
 
+// MARK: - GameSceneDelegate
 extension GameViewController: GameSceneDelegate {
-    
-    func isScenePaused(_ value: Bool) {
+    func scenePaused(_ value: Bool) {
         pauseButton.setImage(value ? .init(named: "play") : .init(named: "pause"), for: .normal)
     }
     
-    func showCounter() {
+    func displayCounter() {
         countdownValue = 3
         counterView.isHidden = false
         startCountdown()
@@ -191,8 +185,8 @@ extension GameViewController: GameSceneDelegate {
             scene?.isPaused = false
         }
     }
-    
-    func endGame(score: Int) {
+
+    func gameEnded(score: Int) {
         scene?.isPaused = true
         self.resultLabel.text = String(score)
         if let bestScore = UserDefaults.standard.value(forKey: "bestScore") as? Int {
