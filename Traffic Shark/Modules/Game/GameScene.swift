@@ -149,6 +149,8 @@ final class GameScene: SKScene, SKPhysicsContactDelegate {
         borderBackgroundNode = SKShapeNode(circleOfRadius: borderBackgroundSize.width / 2)
         borderBackgroundNode.fillColor = UIColor(named: "borderedBackgroundNode")!
         borderBackgroundNode.zPosition = 99
+        borderBackgroundNode.strokeColor = .clear
+        borderBackgroundNode.lineWidth = 0
         
         // Position the circular background
         borderBackgroundNode.position = CGPoint(x: self.frame.midX, y: 3.5 * self.frame.size.height / 4 + 1)
@@ -159,8 +161,8 @@ final class GameScene: SKScene, SKPhysicsContactDelegate {
         let backgroundSize = CGSize(width: scoreLabel.frame.width + 30, height: scoreLabel.frame.height + 30)
         scoreBackgroundNode = SKShapeNode(circleOfRadius: backgroundSize.width / 2)
         scoreBackgroundNode.fillColor = UIColor(named: "counterBackgroundNode")!
-        scoreBackgroundNode.strokeColor = .clear // Убедитесь, что обводка прозрачная
-        scoreBackgroundNode.lineWidth = 0 // Установите ширину линии в 0, чтобы убрать обводку
+        scoreBackgroundNode.strokeColor = .clear
+        scoreBackgroundNode.lineWidth = 0
         scoreBackgroundNode.zPosition = 99
 
         // Add the score label to the circular background
