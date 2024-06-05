@@ -1,7 +1,4 @@
 //
-//  StatisticsVC.swift
-//  rocketRush
-//
 //  Created by Aleksey Pirogov on 13.11.2023.
 //
 
