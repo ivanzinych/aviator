@@ -1,0 +1,675 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1A322A582AFEB11E00CE2037 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A322A572AFEB11E00CE2037 /* GameScene.swift */; };
+		1A322A5A2AFEB12500CE2037 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 1A322A592AFEB12500CE2037 /* GameScene.sks */; };
+		1A322A5C2AFEB14A00CE2037 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A322A5B2AFEB14A00CE2037 /* Main.storyboard */; };
+		1A322A602AFEB33000CE2037 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A322A5F2AFEB33000CE2037 /* GameViewController.swift */; };
+		1A322A622AFEDB3300CE2037 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A322A612AFEDB3300CE2037 /* Assets.xcassets */; };
+		1A322A642B001D8600CE2037 /* MainMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A322A632B001D8600CE2037 /* MainMenuVC.swift */; };
+		1AF591732B01419800DCCB38 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF591722B01419800DCCB38 /* SettingsVC.swift */; };
+		1AF591762B01494900DCCB38 /* SettingsCheckBoxCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF591752B01494900DCCB38 /* SettingsCheckBoxCell.swift */; };
+		1AF591782B014F5B00DCCB38 /* SettingsSelectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF591772B014F5B00DCCB38 /* SettingsSelectCell.swift */; };
+		1AF5917A2B01843600DCCB38 /* StatisticsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF591792B01843600DCCB38 /* StatisticsVC.swift */; };
+		B41870822AFE8D8A00997B6A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41870812AFE8D8A00997B6A /* AppDelegate.swift */; };
+		B41870842AFE8D8A00997B6A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41870832AFE8D8A00997B6A /* SceneDelegate.swift */; };
+		B418708E2AFE8D8C00997B6A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B418708C2AFE8D8C00997B6A /* LaunchScreen.storyboard */; };
+		D5FD7C7D2C09D57F009FCE34 /* Montserrat-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D5FD7C6B2C09D57E009FCE34 /* Montserrat-Black.ttf */; };
+		D5FD7C8A2C09D57F009FCE34 /* Montserrat-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D5FD7C782C09D57F009FCE34 /* Montserrat-BlackItalic.ttf */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B41870952AFE8D8C00997B6A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B41870762AFE8D8A00997B6A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B418707D2AFE8D8A00997B6A;
+			remoteInfo = rocketRush;
+		};
+		B418709F2AFE8D8C00997B6A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B41870762AFE8D8A00997B6A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B418707D2AFE8D8A00997B6A;
+			remoteInfo = rocketRush;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1A322A572AFEB11E00CE2037 /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		1A322A592AFEB12500CE2037 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
+		1A322A5B2AFEB14A00CE2037 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		1A322A5F2AFEB33000CE2037 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		1A322A612AFEDB3300CE2037 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1A322A632B001D8600CE2037 /* MainMenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuVC.swift; sourceTree = "<group>"; };
+		1AF591722B01419800DCCB38 /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
+		1AF591752B01494900DCCB38 /* SettingsCheckBoxCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCheckBoxCell.swift; sourceTree = "<group>"; };
+		1AF591772B014F5B00DCCB38 /* SettingsSelectCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSelectCell.swift; sourceTree = "<group>"; };
+		1AF591792B01843600DCCB38 /* StatisticsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsVC.swift; sourceTree = "<group>"; };
+		B418707E2AFE8D8A00997B6A /* Traffic Shark.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Traffic Shark.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B41870812AFE8D8A00997B6A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B41870832AFE8D8A00997B6A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		B418708D2AFE8D8C00997B6A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		B418708F2AFE8D8C00997B6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B41870942AFE8D8C00997B6A /* Traffic SharkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Traffic SharkTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B418709E2AFE8D8C00997B6A /* Traffic SharkUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Traffic SharkUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D5FD7C6B2C09D57E009FCE34 /* Montserrat-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Black.ttf"; sourceTree = "<group>"; };
+		D5FD7C782C09D57F009FCE34 /* Montserrat-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-BlackItalic.ttf"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B418707B2AFE8D8A00997B6A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B41870912AFE8D8C00997B6A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B418709B2AFE8D8C00997B6A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1AF591742B01492F00DCCB38 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				1AF591722B01419800DCCB38 /* SettingsVC.swift */,
+				1AF591752B01494900DCCB38 /* SettingsCheckBoxCell.swift */,
+				1AF591772B014F5B00DCCB38 /* SettingsSelectCell.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		B41870752AFE8D8A00997B6A = {
+			isa = PBXGroup;
+			children = (
+				B41870802AFE8D8A00997B6A /* Traffic Shark */,
+				B418707F2AFE8D8A00997B6A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B418707F2AFE8D8A00997B6A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B418707E2AFE8D8A00997B6A /* Traffic Shark.app */,
+				B41870942AFE8D8C00997B6A /* Traffic SharkTests.xctest */,
+				B418709E2AFE8D8C00997B6A /* Traffic SharkUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B41870802AFE8D8A00997B6A /* Traffic Shark */ = {
+			isa = PBXGroup;
+			children = (
+				D562693B2C0F6CB1002C36CF /* Common */,
+				D562693A2C0F6CA9002C36CF /* Modules */,
+				D5FD7C672C09D545009FCE34 /* Resources */,
+				1A322A612AFEDB3300CE2037 /* Assets.xcassets */,
+				B418708C2AFE8D8C00997B6A /* LaunchScreen.storyboard */,
+				B418708F2AFE8D8C00997B6A /* Info.plist */,
+			);
+			path = "Traffic Shark";
+			sourceTree = "<group>";
+		};
+		D562693A2C0F6CA9002C36CF /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				D562693C2C0F6CBE002C36CF /* Game */,
+				D562693D2C0F6CC1002C36CF /* Main */,
+				1AF591742B01492F00DCCB38 /* Settings */,
+				D562693F2C0F6CCD002C36CF /* Statistics */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		D562693B2C0F6CB1002C36CF /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				B41870812AFE8D8A00997B6A /* AppDelegate.swift */,
+				B41870832AFE8D8A00997B6A /* SceneDelegate.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		D562693C2C0F6CBE002C36CF /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				1A322A592AFEB12500CE2037 /* GameScene.sks */,
+				1A322A572AFEB11E00CE2037 /* GameScene.swift */,
+				1A322A5F2AFEB33000CE2037 /* GameViewController.swift */,
+			);
+			path = Game;
+			sourceTree = "<group>";
+		};
+		D562693D2C0F6CC1002C36CF /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				1A322A5B2AFEB14A00CE2037 /* Main.storyboard */,
+				1A322A632B001D8600CE2037 /* MainMenuVC.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		D562693F2C0F6CCD002C36CF /* Statistics */ = {
+			isa = PBXGroup;
+			children = (
+				1AF591792B01843600DCCB38 /* StatisticsVC.swift */,
+			);
+			path = Statistics;
+			sourceTree = "<group>";
+		};
+		D5FD7C672C09D545009FCE34 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D5FD7C682C09D573009FCE34 /* Fonts */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		D5FD7C682C09D573009FCE34 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				D5FD7C6B2C09D57E009FCE34 /* Montserrat-Black.ttf */,
+				D5FD7C782C09D57F009FCE34 /* Montserrat-BlackItalic.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B418707D2AFE8D8A00997B6A /* Traffic Shark */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B41870A82AFE8D8C00997B6A /* Build configuration list for PBXNativeTarget "Traffic Shark" */;
+			buildPhases = (
+				B418707A2AFE8D8A00997B6A /* Sources */,
+				B418707B2AFE8D8A00997B6A /* Frameworks */,
+				B418707C2AFE8D8A00997B6A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Traffic Shark";
+			productName = rocketRush;
+			productReference = B418707E2AFE8D8A00997B6A /* Traffic Shark.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B41870932AFE8D8C00997B6A /* Traffic SharkTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B41870AB2AFE8D8C00997B6A /* Build configuration list for PBXNativeTarget "Traffic SharkTests" */;
+			buildPhases = (
+				B41870902AFE8D8C00997B6A /* Sources */,
+				B41870912AFE8D8C00997B6A /* Frameworks */,
+				B41870922AFE8D8C00997B6A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B41870962AFE8D8C00997B6A /* PBXTargetDependency */,
+			);
+			name = "Traffic SharkTests";
+			productName = rocketRushTests;
+			productReference = B41870942AFE8D8C00997B6A /* Traffic SharkTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		B418709D2AFE8D8C00997B6A /* Traffic SharkUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B41870AE2AFE8D8C00997B6A /* Build configuration list for PBXNativeTarget "Traffic SharkUITests" */;
+			buildPhases = (
+				B418709A2AFE8D8C00997B6A /* Sources */,
+				B418709B2AFE8D8C00997B6A /* Frameworks */,
+				B418709C2AFE8D8C00997B6A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B41870A02AFE8D8C00997B6A /* PBXTargetDependency */,
+			);
+			name = "Traffic SharkUITests";
+			productName = rocketRushUITests;
+			productReference = B418709E2AFE8D8C00997B6A /* Traffic SharkUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B41870762AFE8D8A00997B6A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1420;
+				LastUpgradeCheck = 1420;
+				TargetAttributes = {
+					B418707D2AFE8D8A00997B6A = {
+						CreatedOnToolsVersion = 14.2;
+					};
+					B41870932AFE8D8C00997B6A = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = B418707D2AFE8D8A00997B6A;
+					};
+					B418709D2AFE8D8C00997B6A = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = B418707D2AFE8D8A00997B6A;
+					};
+				};
+			};
+			buildConfigurationList = B41870792AFE8D8A00997B6A /* Build configuration list for PBXProject "Traffic Shark" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B41870752AFE8D8A00997B6A;
+			productRefGroup = B418707F2AFE8D8A00997B6A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B418707D2AFE8D8A00997B6A /* Traffic Shark */,
+				B41870932AFE8D8C00997B6A /* Traffic SharkTests */,
+				B418709D2AFE8D8C00997B6A /* Traffic SharkUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B418707C2AFE8D8A00997B6A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D5FD7C7D2C09D57F009FCE34 /* Montserrat-Black.ttf in Resources */,
+				1A322A5A2AFEB12500CE2037 /* GameScene.sks in Resources */,
+				B418708E2AFE8D8C00997B6A /* LaunchScreen.storyboard in Resources */,
+				1A322A5C2AFEB14A00CE2037 /* Main.storyboard in Resources */,
+				D5FD7C8A2C09D57F009FCE34 /* Montserrat-BlackItalic.ttf in Resources */,
+				1A322A622AFEDB3300CE2037 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B41870922AFE8D8C00997B6A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B418709C2AFE8D8C00997B6A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B418707A2AFE8D8A00997B6A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1AF591782B014F5B00DCCB38 /* SettingsSelectCell.swift in Sources */,
+				1AF5917A2B01843600DCCB38 /* StatisticsVC.swift in Sources */,
+				1A322A602AFEB33000CE2037 /* GameViewController.swift in Sources */,
+				1A322A642B001D8600CE2037 /* MainMenuVC.swift in Sources */,
+				B41870822AFE8D8A00997B6A /* AppDelegate.swift in Sources */,
+				1A322A582AFEB11E00CE2037 /* GameScene.swift in Sources */,
+				1AF591762B01494900DCCB38 /* SettingsCheckBoxCell.swift in Sources */,
+				B41870842AFE8D8A00997B6A /* SceneDelegate.swift in Sources */,
+				1AF591732B01419800DCCB38 /* SettingsVC.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B41870902AFE8D8C00997B6A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B418709A2AFE8D8C00997B6A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B41870962AFE8D8C00997B6A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B418707D2AFE8D8A00997B6A /* Traffic Shark */;
+			targetProxy = B41870952AFE8D8C00997B6A /* PBXContainerItemProxy */;
+		};
+		B41870A02AFE8D8C00997B6A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B418707D2AFE8D8A00997B6A /* Traffic Shark */;
+			targetProxy = B418709F2AFE8D8C00997B6A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		B418708C2AFE8D8C00997B6A /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B418708D2AFE8D8C00997B6A /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B41870A62AFE8D8C00997B6A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		B41870A72AFE8D8C00997B6A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B41870A92AFE8D8C00997B6A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 449H3QGX49;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Traffic Shark/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Traffic Shark";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.traffic.shark;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		B41870AA2AFE8D8C00997B6A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 449H3QGX49;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Traffic Shark/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Traffic Shark";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.traffic.shark;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		B41870AC2AFE8D8C00997B6A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = rocketrush.com.rocketRushTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Traffic Shark.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Traffic Shark";
+			};
+			name = Debug;
+		};
+		B41870AD2AFE8D8C00997B6A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = rocketrush.com.rocketRushTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Traffic Shark.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Traffic Shark";
+			};
+			name = Release;
+		};
+		B41870AF2AFE8D8C00997B6A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = rocketrush.com.rocketRushUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = rocketRush;
+			};
+			name = Debug;
+		};
+		B41870B02AFE8D8C00997B6A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = rocketrush.com.rocketRushUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = rocketRush;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B41870792AFE8D8A00997B6A /* Build configuration list for PBXProject "Traffic Shark" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B41870A62AFE8D8C00997B6A /* Debug */,
+				B41870A72AFE8D8C00997B6A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B41870A82AFE8D8C00997B6A /* Build configuration list for PBXNativeTarget "Traffic Shark" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B41870A92AFE8D8C00997B6A /* Debug */,
+				B41870AA2AFE8D8C00997B6A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B41870AB2AFE8D8C00997B6A /* Build configuration list for PBXNativeTarget "Traffic SharkTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B41870AC2AFE8D8C00997B6A /* Debug */,
+				B41870AD2AFE8D8C00997B6A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B41870AE2AFE8D8C00997B6A /* Build configuration list for PBXNativeTarget "Traffic SharkUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B41870AF2AFE8D8C00997B6A /* Debug */,
+				B41870B02AFE8D8C00997B6A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B41870762AFE8D8A00997B6A /* Project object */;
+}
