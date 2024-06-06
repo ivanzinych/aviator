@@ -9,26 +9,6 @@
 import UIKit
 import SpriteKit
 
-extension SKNode {
-    class func unarchiveFromFile(_ file : String) -> SKNode? {
-        
-        let path = Bundle.main.path(forResource: file, ofType: "sks")
-        
-        let sceneData: Data?
-        do {
-            sceneData = try Data(contentsOf: URL(fileURLWithPath: path!), options: .mappedIfSafe)
-        } catch _ {
-            sceneData = nil
-        }
-        let archiver = NSKeyedUnarchiver(forReadingWith: sceneData!)
-        
-        archiver.setClass(self.classForKeyedUnarchiver(), forClassName: "SKScene")
-        let scene = archiver.decodeObject(forKey: NSKeyedArchiveRootObjectKey) as! GameScene
-        archiver.finishDecoding()
-        return scene
-    }
-}
-
 class GameViewController: UIViewController {
 
     @IBOutlet weak var resultView: UIView!
@@ -77,8 +57,6 @@ class GameViewController: UIViewController {
             overlay.frame = view.bounds
             overlay.alpha = 0.9
             
-//            blurView.contentView.addSubview(createBlurredImage()) // Вызываем функцию для создания размытого изображения
-
             // Добавляем блюр на представление
             resultView.insertSubview(overlay, at: 0)
             
@@ -172,7 +150,13 @@ extension GameViewController: GameSceneDelegate {
     }
     
     func startCountdown() {
-        countdownTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateCountdown), userInfo: nil, repeats: true)
+        countdownTimer = Timer.scheduledTimer(
+            timeInterval: 1.0,
+            target: self,
+            selector: #selector(updateCountdown),
+            userInfo: nil,
+            repeats: true
+        )
     }
     
     @objc func updateCountdown() {

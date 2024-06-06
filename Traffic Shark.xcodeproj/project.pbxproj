@@ -20,6 +20,7 @@
 		B41870822AFE8D8A00997B6A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41870812AFE8D8A00997B6A /* AppDelegate.swift */; };
 		B41870842AFE8D8A00997B6A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41870832AFE8D8A00997B6A /* SceneDelegate.swift */; };
 		B418708E2AFE8D8C00997B6A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B418708C2AFE8D8C00997B6A /* LaunchScreen.storyboard */; };
+		D5BAC3AF2C107033009E0050 /* SKNode+.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BAC3AE2C107033009E0050 /* SKNode+.swift */; };
 		D5FD7C7D2C09D57F009FCE34 /* Montserrat-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D5FD7C6B2C09D57E009FCE34 /* Montserrat-Black.ttf */; };
 		D5FD7C8A2C09D57F009FCE34 /* Montserrat-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D5FD7C782C09D57F009FCE34 /* Montserrat-BlackItalic.ttf */; };
 /* End PBXBuildFile section */
@@ -59,6 +60,7 @@
 		B418708F2AFE8D8C00997B6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B41870942AFE8D8C00997B6A /* Traffic SharkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Traffic SharkTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B418709E2AFE8D8C00997B6A /* Traffic SharkUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Traffic SharkUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D5BAC3AE2C107033009E0050 /* SKNode+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKNode+.swift"; sourceTree = "<group>"; };
 		D5FD7C6B2C09D57E009FCE34 /* Montserrat-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Black.ttf"; sourceTree = "<group>"; };
 		D5FD7C782C09D57F009FCE34 /* Montserrat-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-BlackItalic.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -119,6 +121,7 @@
 		B41870802AFE8D8A00997B6A /* Traffic Shark */ = {
 			isa = PBXGroup;
 			children = (
+				D5BAC3AD2C10702A009E0050 /* Extensions */,
 				D562693B2C0F6CB1002C36CF /* Common */,
 				D562693A2C0F6CA9002C36CF /* Modules */,
 				D5FD7C672C09D545009FCE34 /* Resources */,
@@ -174,6 +177,14 @@
 				1AF591792B01843600DCCB38 /* StatisticsVC.swift */,
 			);
 			path = Statistics;
+			sourceTree = "<group>";
+		};
+		D5BAC3AD2C10702A009E0050 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				D5BAC3AE2C107033009E0050 /* SKNode+.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		D5FD7C672C09D545009FCE34 /* Resources */ = {
@@ -330,6 +341,7 @@
 				1AF591782B014F5B00DCCB38 /* SettingsSelectCell.swift in Sources */,
 				1AF5917A2B01843600DCCB38 /* StatisticsVC.swift in Sources */,
 				1A322A602AFEB33000CE2037 /* GameViewController.swift in Sources */,
+				D5BAC3AF2C107033009E0050 /* SKNode+.swift in Sources */,
 				1A322A642B001D8600CE2037 /* MainMenuVC.swift in Sources */,
 				B41870822AFE8D8A00997B6A /* AppDelegate.swift in Sources */,
 				1A322A582AFEB11E00CE2037 /* GameScene.swift in Sources */,
