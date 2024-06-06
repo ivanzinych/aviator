@@ -53,11 +53,11 @@
 		1AF591752B01494900DCCB38 /* SettingsCheckBoxCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCheckBoxCell.swift; sourceTree = "<group>"; };
 		1AF591772B014F5B00DCCB38 /* SettingsSelectCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSelectCell.swift; sourceTree = "<group>"; };
 		1AF591792B01843600DCCB38 /* StatisticsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsVC.swift; sourceTree = "<group>"; };
+		3B23C0482C1059E100487504 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B418707E2AFE8D8A00997B6A /* Traffic Shark.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Traffic Shark.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B41870812AFE8D8A00997B6A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B41870832AFE8D8A00997B6A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		B418708D2AFE8D8C00997B6A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		B418708F2AFE8D8C00997B6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B41870942AFE8D8C00997B6A /* Traffic SharkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Traffic SharkTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B418709E2AFE8D8C00997B6A /* Traffic SharkUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Traffic SharkUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5BAC3AE2C107033009E0050 /* SKNode+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKNode+.swift"; sourceTree = "<group>"; };
@@ -127,7 +127,7 @@
 				D5FD7C672C09D545009FCE34 /* Resources */,
 				1A322A612AFEDB3300CE2037 /* Assets.xcassets */,
 				B418708C2AFE8D8C00997B6A /* LaunchScreen.storyboard */,
-				B418708F2AFE8D8C00997B6A /* Info.plist */,
+				3B23C0482C1059E100487504 /* Info.plist */,
 			);
 			path = "Traffic Shark";
 			sourceTree = "<group>";
@@ -513,7 +513,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 449H3QGX49;
+				DEVELOPMENT_TEAM = 9RB88ABKQ3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Traffic Shark/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Traffic Shark";
@@ -527,7 +527,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.traffic.shark;
+				PRODUCT_BUNDLE_IDENTIFIER = kjhkghgkhglh;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -545,7 +545,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 449H3QGX49;
+				DEVELOPMENT_TEAM = 9RB88ABKQ3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Traffic Shark/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Traffic Shark";
@@ -559,7 +559,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.traffic.shark;
+				PRODUCT_BUNDLE_IDENTIFIER = kjhkghgkhglh;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;

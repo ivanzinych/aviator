@@ -1,9 +1,5 @@
 //
-//  GameViewController.swift
-//  FlappyBird
-//
-//  Created by Nate Murray on 6/2/14.
-//  Copyright (c) 2014 Fullstack.io. All rights reserved.
+//  Created by Aleksey Pirogov on 6/2/14.
 //
 
 import UIKit
